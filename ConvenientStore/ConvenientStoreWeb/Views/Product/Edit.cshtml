@@ -1,0 +1,41 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Update";
+}
+
+<div class="container m-4">
+<div class="row p-2">
+<h1 class="text-primary text-black text-center m-0">Update A Product</h1>
+<form method="post" >
+    <div asp-validation-summary="All"></div>
+    <div class="pb-2">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" disabled />
+                <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+    <div class="pb-2">
+        <label asp-for="ProductName"></label>
+        <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+    </div>
+        <div class="pb-2">
+            <label asp-for="Quantity"></label>
+            <input asp-for="Quantity" class="form-control" />
+            <span asp-validation-for="Quantity" class="text-danger"></span>
+        </div>
+        <div class="pb-2">
+            <label asp-for="ItemDate"></label>
+            <input asp-for="ItemDate" class="form-control" />
+                <span asp-validation-for="ItemDate" class="text-danger"></span>
+        </div>
+    <button type="submit" class="btn btn-primary" style="width:150px">Update a Product</button>
+    <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to the List</a>
+</form>
+</div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
