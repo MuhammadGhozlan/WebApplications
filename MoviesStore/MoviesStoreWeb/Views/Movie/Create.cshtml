@@ -1,0 +1,58 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container w-100 m-4">
+    <div class="row p-3">
+        <h2 class="text-primary">Create a Movie</h2>
+        <div class="p-3">
+            <form method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="p-2">
+                    <label asp-for="Id"></label>
+                    <input asp-for="Id" class="form-control" disabled />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+
+
+                <div class="p-2">
+                    <label asp-for="MovieName"></label>
+                    <input asp-for="MovieName" class="form-control" />
+                    <span asp-validation-for="MovieName" class="text-danger"></span>
+                </div>
+
+
+                <div class="p-2">
+                    <label asp-for="TimeOfSelling"></label>
+                    <input asp-for="TimeOfSelling" class="form-control" />
+                    <span asp-validation-for="TimeOfSelling" class="text-danger"></span>
+                </div>
+
+
+
+
+                <div class="p-2">
+                    <label asp-for="Quantity"></label>
+                    <input asp-for="Quantity" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+
+
+                <div class="p-2">
+                    <label asp-for="NumbersOfCopies"></label>
+                    <input asp-for="NumbersOfCopies" class="form-control" />
+                    <span asp-validation-for="NumbersOfCopies" class="text-danger"></span>
+                </div>
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a asp-controller="Movie" asp-action="Index" class="btn btn-secondary">Back to the List</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+

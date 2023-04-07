@@ -1,0 +1,36 @@
+﻿@model Patient
+@{
+    ViewData["Title"] = "Create Patient";
+}
+
+<div class="row p-3">
+<h2 class="text-primary text-black`">Create Patient</h2>
+</div>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="pt-3">
+        <label asp-for="Id"></label>
+        <input asp-for="Id" class="form-control" disabled/>
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>
+
+    <div class="pt-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="pt-3">
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="width:30%">Create</button>
+    <a asp-controller="Patient" asp-action="Index" class="btn btn-secondary" style="width:30%">Back to List</a>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

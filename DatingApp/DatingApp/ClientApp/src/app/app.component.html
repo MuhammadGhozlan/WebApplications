@@ -1,0 +1,12 @@
+<body>
+  <app-nav-menu></app-nav-menu>
+  <div class="container">
+    <!--<router-outlet></router-outlet>-->
+    <div class="col-6">
+      <ul>
+        <li *ngFor="let user of users">{{user.id}}-{{user.name}}</li>
+      </ul>
+    </div>
+
+  </div>
+</body>

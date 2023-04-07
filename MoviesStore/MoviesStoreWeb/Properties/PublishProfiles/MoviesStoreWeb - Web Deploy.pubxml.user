@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA0SmlZmzkREqdyPZJwVu0MAAAAAACAAAAAAAQZgAAAAEAACAAAADqzIqys45ebHmzTi7A02PF3AkWe4diZJpmPIVQX+MxfQAAAAAOgAAAAAIAACAAAAC3ymLPX0lpuqpIfgpkZ057NGOTRKCwe2NlvhoF7v1n5IAAAAAOh9dUjqfrkTZmOn3JmYpfkKeQ/LWLnER8t0MnauhDxAFhMX9Rkb9t1J5G+8ZBhibEmRLdBGYpOgl4gw4MTw/s+XDT2WzRAhFoNt6ME3k/XabobmzEMQCFGu79IlBYCW5f0Xg64A9BnVKN/uGF+4Ds/tsGB2WxhyFJvMv9oNgdzkAAAAB8CFHNClaiWFX7Q0x6bj4ij6LShYXzq5/pJ7s7zmHv9dClSUUmLO8tDL/Y4jlvIr+YepnxS5uT9zz+aK5kCZuo</EncryptedPassword>
+    <History>True|2022-12-21T07:56:07.1063690Z;False|2022-12-21T01:51:57.8418062-06:00;True|2022-12-21T01:50:00.4701859-06:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=tcp:ghozlanserver.database.windows.net,1433%3bInitial Catalog=MovieDB%3bPersist Security Info=False%3bUser ID=movie-admin%3bPassword=1Khbcnntik%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MoviesStoreWeb.Data.ApplicationDbContext">
+      <Value>Server=tcp:ghozlanserver.database.windows.net,1433%3bInitial Catalog=MovieDB%3bPersist Security Info=False%3bUser ID=movie-admin%3bPassword=1Khbcnntik%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

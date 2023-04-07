@@ -1,0 +1,32 @@
+﻿@model Movie
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="container w-100 m-4">
+<div class="row p-3">
+    <h2 class="text-primary">Create a Movie</h2>
+    <div class="p-3">
+        <form method="post">
+            
+            <div class="p-2">
+                <label asp-for="Id"></label>
+                <input asp-for="Id" class="form-control" disabled />
+                
+            </div>
+
+
+            <div class="p-2">
+                <label asp-for="MovieName"></label>
+                <input asp-for="MovieName" class="form-control" disabled/>
+                
+            </div>
+            
+            <button class="btn btn-primary" type="submit">Delete</button>
+            <a asp-controller="Movie" asp-action="Index" class="btn btn-secondary">Back to the List</a>
+        </form>
+    </div>
+</div>
+</div>
+
+

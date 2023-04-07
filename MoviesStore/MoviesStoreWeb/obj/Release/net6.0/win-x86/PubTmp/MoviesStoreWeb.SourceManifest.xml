@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\muham\source\repos\MoviesStore\MoviesStoreWeb\obj\Release\net6.0\win-x86\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\muham\source\repos\MoviesStore\MoviesStoreWeb\obj\Release\net6.0\win-x86\PubTmp\EFSQLScripts\MoviesStoreWeb.Data.ApplicationDbContext.sql" />
+</sitemanifest>
