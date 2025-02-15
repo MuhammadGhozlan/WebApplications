@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FbiHXEXdFcY=",
+  "dgSpecHash": "/LYroHKcRR0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\Personal Stuff\\GitHub Projects\\WebApplications\\TutoringSolution\\TutoringWebApplication\\TutoringWebApplication.csproj",
+  "projectFilePath": "C:\\Users\\muham\\source\\WebApplications\\TutoringSolution\\TutoringWebApplication\\TutoringWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
