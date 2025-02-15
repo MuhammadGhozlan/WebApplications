@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using System.Runtime.Intrinsics.Arm;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using TutoringWebApplication.Data;
 using TutoringWebApplication.Models;
@@ -95,7 +97,7 @@ namespace TutoringWebApplication.Controllers
             {
                 IsPersistent = true,
                 ExpiresUtc = DateTime.UtcNow.AddMinutes(60),
-            });
+            });           
             return Ok(new { Message = "User Logged In Successfully" });
         }
         [ProducesResponseType(StatusCodes.Status200OK)]

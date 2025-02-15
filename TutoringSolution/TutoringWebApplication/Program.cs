@@ -37,6 +37,7 @@ builder.Services.AddAuthentication(options =>
     cfg.AccessDeniedPath="/api/account/accessdenied";
     cfg.SlidingExpiration=true;
 });
+
 //AddCors
 builder.Services.AddCors(options => options.AddPolicy("TutoringSite", builder =>
 {
@@ -44,6 +45,9 @@ builder.Services.AddCors(options => options.AddPolicy("TutoringSite", builder =>
            .AllowAnyHeader()
            .AllowAnyMethod();
 }));
+//Service Registration
+
+//Repository Registration
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
