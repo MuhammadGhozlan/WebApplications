@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RaM3IdZyuBA=",
+  "dgSpecHash": "xNCx9ASSCeY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\muham\\Personal Stuff\\GitHub Projects\\WebApplications\\TutoringSolution\\TutoringWebApplication\\TutoringWebApplication.csproj",
+  "projectFilePath": "C:\\Users\\muham\\source\\WebApplications\\TutoringSolution\\TutoringWebApplication\\TutoringWebApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\muham\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\muham\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
