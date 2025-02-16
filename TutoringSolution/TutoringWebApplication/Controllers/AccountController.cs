@@ -1,15 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.Runtime.Intrinsics.Arm;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
-using TutoringWebApplication.Data;
+using TutoringWebApplication.Interfaces;
 using TutoringWebApplication.Models;
 
 namespace TutoringWebApplication.Controllers
@@ -18,17 +11,14 @@ namespace TutoringWebApplication.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
-        private readonly IConfiguration _configuration;
-        public AccountController(UserManager<User> userManager,
-                                 SignInManager<User> signInManager,
-                                 IConfiguration configuration
+        private readonly IAccountService _accountService;
+        private readonly ILogger<AccountController> _logger;
+        public AccountController(IAccountService accountService,
+                                 ILogger<AccountController> logger
                                  )
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _configuration = configuration;
+            _accountService = accountService;
+            _logger = logger;
         }
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -37,32 +27,17 @@ namespace TutoringWebApplication.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register(SignUpCredentials signUpCredentials)
         {
-            var userExists = await _userManager.FindByEmailAsync(signUpCredentials.Email);
-            if(userExists != null)
+            var register = await _accountService.Registration(signUpCredentials);
+            if(register == null || register.Succeeded == false)
             {
-                return BadRequest("User Already Exists!");
+                foreach(var error in register.Errors)
+                {
+                    _logger.LogError(error.Description);
+                }
+                
+                return BadRequest(register.Errors.Select(e=>e.Description));
             }
-            var user = new User
-            {
-                FirstName = signUpCredentials.FirstName,
-                LastName = signUpCredentials.LastName,
-                Email = signUpCredentials.Email,
-                UserName = signUpCredentials.Email
-            };
-            var result = await _userManager.CreateAsync(user, signUpCredentials.Password);
-            if(!result.Succeeded)
-            {
-                return BadRequest(result.Errors);
-            }
-            if(signUpCredentials.UserRole == 0)
-            {
-                await _userManager.AddToRoleAsync(user, UserRole.Student.ToString());
-            }
-            else
-            {
-                await _userManager.AddToRoleAsync(user, signUpCredentials.UserRole.ToString());
-            }
-            return Ok(new { Message = $"User has been registered with a role of {signUpCredentials.UserRole}" });
+            return Ok(register);
         }
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -71,34 +46,18 @@ namespace TutoringWebApplication.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult> Login(SignInCredentials signInCredentials)
         {
-            var user = await _userManager.FindByEmailAsync(signInCredentials.Email);
-            if(user == null)
+            var login = await _accountService.Login(signInCredentials);
+            if(login == null)
             {
-                return NotFound("User was not found");
+                _logger.LogError("Check the username and password?");
+                return Unauthorized("Check the username and password?");
             }
-            var result = await _signInManager.PasswordSignInAsync(user, signInCredentials.Password, false, false);
-            if(!result.Succeeded)
-            {
-                return Unauthorized("Check the credentials and try again");
-            }
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name,user.FirstName),
-                new Claim(ClaimTypes.Email,user.Email!)
-            };
-            var roles = await _userManager.GetRolesAsync(user);
-            foreach(var role in roles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role));
-            }
-            var claimIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var claimPrinciple = new ClaimsPrincipal(claimIdentity);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrinciple, new AuthenticationProperties
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, login, new AuthenticationProperties
             {
                 IsPersistent = true,
                 ExpiresUtc = DateTime.UtcNow.AddMinutes(60),
-            });           
-            return Ok(new { Message = "User Logged In Successfully" });
+            });
+            return Ok(login);
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
