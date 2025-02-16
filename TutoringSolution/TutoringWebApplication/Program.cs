@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TutoringWebApplication.Data;
+using TutoringWebApplication.Interfaces;
 using TutoringWebApplication.Models;
+using TutoringWebApplication.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,7 +49,8 @@ builder.Services.AddCors(options => options.AddPolicy("TutoringSite", builder =>
            .AllowAnyMethod();
 }));
 //Service Registration
-
+builder.Services.AddScoped<IAccountService,AccountService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Repository Registration
 var app = builder.Build();
 
