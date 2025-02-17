@@ -57,7 +57,8 @@ namespace TutoringWebApplication.Controllers
                 IsPersistent = true,
                 ExpiresUtc = DateTime.UtcNow.AddMinutes(60),
             });
-            return Ok(login);
+            //var authCookie = HttpContext.Response.Headers["Set-Cookie"].First(c=>c.StartsWith("AuthCookie"));
+            return Ok(new {Message="User Logged in Successfully." });
         }
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
