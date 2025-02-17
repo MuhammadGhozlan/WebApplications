@@ -47,6 +47,11 @@ namespace TutoringWebApplication.Services
             {
                 await _userManager.AddToRoleAsync(user, UserRole.Student.ToString());
             }
+            else if(signUpCredentials.UserRole == UserRole.Admin)
+            {
+                _logger.LogInformation("Admin role is restricted");
+                return IdentityResult.Failed(new IdentityError { Description="You cannot assign the admin role to the user"});
+            }
             else
             {
                 await _userManager.AddToRoleAsync(user, signUpCredentials.UserRole.ToString());

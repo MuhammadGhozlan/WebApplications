@@ -71,4 +71,18 @@ app.UseCors("TutoringSite");
 
 app.MapControllers();
 
+using(var scoped = app.Services.CreateScope())
+{
+    var roleManager=scoped.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var roles=new[] {"Admin","Instructor","Student"};
+    foreach(var role in roles)
+    {
+        if(! await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
+
 app.Run();
+
