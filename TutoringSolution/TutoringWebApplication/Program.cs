@@ -4,7 +4,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TutoringWebApplication.Data;
 using TutoringWebApplication.Interfaces;
+using TutoringWebApplication.Interfaces.Repositories_Interfaces;
+using TutoringWebApplication.Interfaces.Services_Interfaces;
 using TutoringWebApplication.Models;
+using TutoringWebApplication.Repositories;
 using TutoringWebApplication.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -51,7 +54,9 @@ builder.Services.AddCors(options => options.AddPolicy("TutoringSite", builder =>
 //Service Registration
 builder.Services.AddScoped<IAccountService,AccountService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ICourseService,CourseService>();
 //Repository Registration
+builder.Services.AddScoped<ICourseRepository,CourseRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

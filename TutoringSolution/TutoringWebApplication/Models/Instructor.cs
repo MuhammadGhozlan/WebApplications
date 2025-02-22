@@ -11,11 +11,7 @@ namespace TutoringWebApplication.Models
         [Required, MaxLength(100), EmailAddress(ErrorMessage = "Invalid email address")]
         public string Email { get; set; }
         [Required, MaxLength(100)]
-        public string PhoneNumber { get; set; }
-        public ICollection<Course> Courses { get; set; }
-        public Instructor()
-        {
-            Courses = new List<Course>();
-        }
+        public string PhoneNumber { get; set; }       
+       
     }
 }
