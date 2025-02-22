@@ -18,7 +18,6 @@ namespace TutoringWebApplication.Models
         [ForeignKey(nameof(StudentId))]
         public int StudentId { get; set; }
         public Student Student { get; set; }
-
         public Payment()
         {
             PaymentDate = DateTime.Now;
