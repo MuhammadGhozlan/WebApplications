@@ -9,6 +9,9 @@ namespace TutoringWebApplication.Models
         {
             CreateMap<CourseDto,Course>();
             CreateMap<Course,CourseDto>();
+            
+            CreateMap<StudentDto,Student>();
+            CreateMap<Student, StudentDto>();
         }
     }
 }
