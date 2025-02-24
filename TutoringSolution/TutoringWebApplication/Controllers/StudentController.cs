@@ -150,7 +150,7 @@ namespace TutoringWebApplication.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        [HttpPost("GetFilteredStudents")]
+        [HttpPost("getFilteredStudents")]
         public async Task<ActionResult<ICollection<StudentDto>>> GetFilteredStudents([FromBody] StudentFilterDto studentFilterDto)
         {
             try

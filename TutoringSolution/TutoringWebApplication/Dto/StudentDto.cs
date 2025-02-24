@@ -10,7 +10,7 @@ namespace TutoringWebApplication.Dto
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Description { get; set; }
-        public ICollection<Enrollment> Enrollments { get; set; }
-        public ICollection<Payment> Payments { get; set; }       
+        public ICollection<Enrollment>? Enrollments { get; set; }
+        public ICollection<Payment>? Payments { get; set; }       
     }
 }
