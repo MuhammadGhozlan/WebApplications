@@ -55,8 +55,10 @@ builder.Services.AddCors(options => options.AddPolicy("TutoringSite", builder =>
 builder.Services.AddScoped<IAccountService,AccountService>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ICourseService,CourseService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
 //Repository Registration
 builder.Services.AddScoped<ICourseRepository,CourseRepository>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
